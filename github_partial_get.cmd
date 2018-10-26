@@ -14,6 +14,7 @@
 chcp 65001 2>nul >nul
 
 set "SVN=%~dp0bin\svn.exe"
+set "HISTORY=%~dp0history.txt"
 for /f %%a in ("%SVN%") do ( set "SVN=%%~fsa"  )
 
 ::use pre-supplied argument.
@@ -29,6 +30,18 @@ goto END
 
 
 :RUN
+  ::keep history
+  set "D=%DATE%"
+  set "T=%TIME%"
+  set "YEAR=%D:~-4,4%"
+  set "MONTH=%D:~-10,2%"
+  set "DAY=%D:~-7,2%"
+  set "HOURS=%T:~0,2%"
+  set "MINUTES=%T:~3,2%"
+  set "SECONDS=%T:~6,2%"
+  set "TIMESTAMP=%YEAR%%MONTH%%DAY%_%HOURS%%MINUTES%%SECONDS%"
+  echo.%TIMESTAMP%  %URL% >>%HISTORY%
+
   echo.
   echo Converting:
   echo ^« %URL%
@@ -51,7 +64,7 @@ goto END
 
 ::SVN, permissive-download.
   echo ------------------------------------------------
-  call "%SVN%" "--non-interactive" "--trust-server-cert-failures=unknown-ca,cn-mismatch,expired,not-yet-valid,other" export "%URL%"
+  call "%SVN%" "--config-option=config:miscellany:use-commit-times=yes" "--non-interactive" "--trust-server-cert-failures=unknown-ca,cn-mismatch,expired,not-yet-valid,other" export "%URL%"
   echo ------------------------------------------------
   goto END
 

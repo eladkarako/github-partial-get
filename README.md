@@ -1,4 +1,4 @@
-<h1><a href="https://paypal.me/e1adkarak0" ok><img src="bin/icon.png" alt="PayPal Donation" ok></a> Partial-Download A GitHub-Repository <em>(By Folder)</em> - &nbsp; &nbsp; <a href="https://paypal.me/e1adkarak0" ok><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" alt="PayPal Donation" ok></a></h1>
+<h1>Partial-Download A GitHub-Repository <em>(By Folder)</em></h1>
 
 This is essentially a batch-file and some SVN-binaries.
 
